@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infras/k8s/*
+build:
+  #local:
+  # push: false
+  googleCloudBuild:
+    projectId: studyplatz
+  artifacts:
+    # - image: kingsley555/auth
+    - image: gcr.io/studyplatz/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
