@@ -50,7 +50,7 @@ it("disallows duplicate emails", async () => {
     .post("/api/users/signup")
     .send({
       email: "test@test.com",
-      password: "ballack02",
+      password: "password",
     })
     .expect(201);
 
@@ -58,7 +58,7 @@ it("disallows duplicate emails", async () => {
     .post("/api/users/signup")
     .send({
       email: "test@test.com",
-      password: "sjsnnsnsnsn",
+      password: "password",
     })
     .expect(400);
 });
